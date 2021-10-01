@@ -10,7 +10,7 @@ echo ""
 echo ""
 echo "**********************************************************"
 echo "****                Admin Benutzer                    ****"
-echo "****            Passwort läuft nie ab                 ****"
+echo "****            Passwort lÃ¤uft nie ab                 ****"
 echo "**********************************************************"
 echo ""
 $askPE = read-Host -Prompt "Sollen das Kennwort des lokalen Admin nie ablaufen (J/N)"
@@ -35,7 +35,6 @@ if($askWU -eq "J") {
     Install-module PSWindowsUpdate
     Import-Module PSWindowsUpdate
     Add-WUServiceManager -ServiceID 7971f918-a847-4430-9279-4a52d1efe18d
-   # Get-WUInstall -MicrosoftUpdate -IgnoreUserInput -WhatIf -ForceDownload -ForceInstall 4>&1
     Install-WindowsUpdate -AcceptAll -Install  | Out-File ".\wsuslogs\$(get-date -f yyyy-MM-dd)-$computername-WindowsUpdate.log" -force 
 }
 
@@ -88,7 +87,7 @@ $askIP = read-Host -Prompt "Sollen die Netzwerk-Einstellungen angepasst werden? 
 if($askIP -eq "J") {
 
     Get-NetAdapter -physical | where status -eq 'up' | Select Name
-    $NetAdapter = Read-Host -Prompt "Geben Sie den Wert für Network-InterfaceAlias ein"
+    $NetAdapter = Read-Host -Prompt "Geben Sie den Wert fÃ¼r Network-InterfaceAlias ein"
     
 	$deacIPv6 = Read-Host -Prompt "Soll IPv6 deaktiviert werden? (J/N) Default: Ja"
     $newIP = Read-Host -Prompt "Bitte neue Netzwerk-Addresse eingeben. Default: 192.168.1.10"
@@ -104,22 +103,22 @@ if($askIP -eq "J") {
 	if ($newDNS1 -eq "") {$newDNS1 = "192.168.1.254"}
 	if ($newDNS2 -eq "") {$newDNS2 = ""}
 	if ($newDNSSuffix -eq "") {$newDNSSuffix = "firm.local"}
-	if ($deacIPv6 -eq "") {Disable-NetAdapterBinding –InterfaceAlias $NetAdapter –ComponentID ms_tcpip6}
-	if ($deacIPv6 -eq "J") {Disable-NetAdapterBinding –InterfaceAlias $NetAdapter –ComponentID ms_tcpip6}
+	if ($deacIPv6 -eq "") {Disable-NetAdapterBinding â€“InterfaceAlias $NetAdapter â€“ComponentID ms_tcpip6}
+	if ($deacIPv6 -eq "J") {Disable-NetAdapterBinding â€“InterfaceAlias $NetAdapter â€“ComponentID ms_tcpip6}
 
-    New-NetIPAddress –InterfaceAlias $NetAdapter –IPAddress $newIP –PrefixLength $newSubnet -DefaultGateway $NewGateway
+    New-NetIPAddress â€“InterfaceAlias $NetAdapter â€“IPAddress $newIP â€“PrefixLength $newSubnet -DefaultGateway $NewGateway
     Set-DnsClientGlobalSetting -SuffixSearchList @($newDNSSuffix)
     Set-DnsClientServerAddress -InterfaceAlias $NetAdapter -ServerAddresses ($newDNS1,$newDNS2)
 
     echo ""
     echo ""
-    echo "Sie müssen nun die Konfiguration des Netzwerk-Ports ändern oder den Port wechseln"
+    echo "Sie mÃ¼ssen nun die Konfiguration des Netzwerk-Ports Ã¤ndern oder den Port wechseln"
     $ask_NW_Tausch = Read-Host -Prompt "Haben Sie den NW-Port getauscht? (J/N)"
     if($ask_NW_Tausch -eq "N") {
-            echo "Bitte Netzwerk-Einstellungen oder -Verbindungen ändern!"
-            $ask_NW_Tausch = Read-Host -Prompt "Haben Sie die Änderungen druchgeführt? (J/N)"
+            echo "Bitte Netzwerk-Einstellungen oder -Verbindungen Ã¤ndern!"
+            $ask_NW_Tausch = Read-Host -Prompt "Haben Sie die Ã„nderungen druchgefÃ¼hrt? (J/N)"
             if($ask_NW_Tausch -eq "N") {
-                echo "Das Script kann nicht weiter ausgeführt werden."
+                echo "Das Script kann nicht weiter ausgefÃ¼hrt werden."
                 echo "Das Script wird beendet."
                 Exit-PSHostProcess
             }
@@ -130,10 +129,10 @@ if($askIP -eq "J") {
 echo ""
 echo ""
 echo "**********************************************************"
-echo "****               Domänen Beitritt                   ****"
+echo "****               DomÃ¤nen Beitritt                   ****"
 echo "**********************************************************"
 
-$askDOM = read-Host -Prompt "Sollen der PC einer Domäne beitreten? (J/N)"
+$askDOM = read-Host -Prompt "Sollen der PC einer DomÃ¤ne beitreten? (J/N)"
 if($askDOM -eq "J") {
 
     $newPCName= Read-Host -Prompt "Bitte neuen PC Namen vergeben"
