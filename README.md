@@ -3,7 +3,7 @@ PowerShell Script zur Automatisierten Einrichtung Windows-Clients.
 
 Einrichtungsscript mit folgenden Schritten
 
-Ändern: Kennwort d. lokalen Administrator läuft nicht ab
+* Ändern: Kennwort d. lokalen Administrator läuft nicht ab
 * WindowsUpdate Installation über PS-WindowsUpdate
 * aktivieren von
   * RDP
