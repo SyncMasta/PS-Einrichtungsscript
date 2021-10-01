@@ -9,7 +9,6 @@ Einrichtungsscript mit folgenden Schritten
   * RDP
   * SMB
   * .NET 3.5
-  * Energiesparoptionen
 * Windows Key Import und Aktivierung
 * Aktivieren von Power-Einstellung Höchstleistung
 * Anpassung Netzwerk-Einstellung
