@@ -28,10 +28,11 @@ Das Script sollte auf einem Windows-Installationsmedium in oberster Datei-Ebene 
 Um die Möglichkeiten der Netzwerkanpassung oder AD-Join nutzen zu können, muss das Script an diversen Stellen in den jeweiligen Bereichen angepasst werden.
 Als nächster Schritt ruft man die 2. Datei (2_AfterInstallScript.ps1) auf und folgend den Anweisungen.
 
-### Ausführung
+### Ausführung / Installation
 1. Entpacken des .zip-Archivs
 2. Erstellen eines Ordners "wsuslogs". Dieses Ordner wird für die Protokoll-Dateien der WindowsUpdates benötigt.
-3. Ausführen des PowerShell Befehls, welches in Datei (1 Enable Powershell.txt) steht.
-4. Ausführen des PowerShell Scripts (2_AfterInstallScript.ps1).
+3. Kopieren Sie die Dateien und den Ordner auf einen Windows 10 Installationsmedium (USB Stick) in der obersten Datei-Ebene.
+4. Ausführen des PowerShell Befehls, welches in Datei (1 Enable Powershell.txt) steht.
+5. Ausführen des PowerShell Scripts (2_AfterInstallScript.ps1).
 
 
